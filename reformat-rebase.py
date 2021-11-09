@@ -45,7 +45,7 @@ class GitHelpers:
     # oldest commit is returned first
     def commits_from_to(from_: str,
                         to: str = "HEAD",
-                        from_inclusive=True) -> list[str]:
+                        from_inclusive=True):
         if from_inclusive:
             caret = '^'
         else:
