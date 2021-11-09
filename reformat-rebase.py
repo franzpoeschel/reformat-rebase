@@ -43,9 +43,7 @@ class GitHelpers:
     # both ends are inclusive, from is the old commit, to is the new one
     # if from_inclusive=False, from commit is dropped
     # oldest commit is returned first
-    def commits_from_to(from_: str,
-                        to: str = "HEAD",
-                        from_inclusive=True):
+    def commits_from_to(from_: str, to: str = "HEAD", from_inclusive=True):
         if from_inclusive:
             caret = '^'
         else:
