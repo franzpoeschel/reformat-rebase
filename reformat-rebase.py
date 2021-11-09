@@ -68,7 +68,7 @@ class GitHelpers:
         commit_message = GuardSyscall.getoutput(get_commit_message_command)
         # this works for whitespaced commit messages too:
         recommit_command = [
-            "git", "commit", "--message={}".format(commit_message)
+            "git", "commit", ".", "--message={}".format(commit_message)
         ]
         GuardSyscall.call(*recommit_command)
 
