@@ -27,7 +27,7 @@ On this branch, `reformat-rebase` will:
 * First create a (temporary) commit by applying the reformatting command.
 * Then reapply each commit on the feature branch, reformatting each single commit.
   For each reapplied commit `(c)`, the script will:
-  
+
   1. Reapply the commit by calling `git checkout (c) -- .`.
   2. Reformat the commit by using the supplied script.
   3. Commit the changes by using the same commit message.
@@ -35,10 +35,10 @@ On this branch, `reformat-rebase` will:
 The result of this procedure should look like this:
 ```
                     temporary
-                     reformat 
+                     reformat
                       commit  (f1') (f2') (f3')
                          |      |     |     |
-temporary branch      –––*––––––*–––~–*–~–––*––– 
+temporary branch      –––*––––––*–––~–*–~–––*–––
                     /
                    / (f1) (f2) (f3)
 feature branch     –––*––––*––––*–––
@@ -61,11 +61,11 @@ git rebase --onto (dev2) "<temporary reformat commit>"
 Since there might be merge conflicts that need to be resolved manually, you will need to do that step manually.
 After rebasing:
 ```
-                                          
-                                           
+
+
                                             (f1') (f2') (f3')
                                               |     |     |
-temporary branch                           –––*–––~–*–~–––*––– 
+temporary branch                           –––*–––~–*–~–––*–––
                                           /
                      (f1) (f2) (f3)      /
 feature branch     –––*––––*––––*–––    /
@@ -97,7 +97,6 @@ It tries to avoid damage by creating a new branch, but standard caution applies.
   Be aware of this when dealing with merging branches.
 * Author information is currently lost when reapplying commits.
   Commits are currently reapplied by copying the commit mesasge and nothing more.
-* The command passed via `--reformat is called with `subprocess.call()` in Python.
+* The command passed via `--reformat` is called with `subprocess.call()` in Python.
   If you put the commands for reformatting inside a script `./reformat.sh`, this means that you need to be explicit about the interpreter, e.g.: `reformat-rebase --reformat bash ./reformat.sh …`.
 * If any command returns a non-zero return code, the script will exit with an exception and leave the temporary branch in its current status.
-  
